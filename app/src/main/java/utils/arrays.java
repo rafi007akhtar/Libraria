@@ -20,9 +20,14 @@ public class arrays {
     };
     public String books[][] = {algo, dbms};
 
-    // User arrays
-    public String users[][] = {
-            {"Rafi", "alimdrafi@gmail.com", "0", null}
+
+    public static String temp[] = {"alimdrafi@gmail.com", "0", null};
+
+    public static Map<String, String[]> users = new HashMap<String, String[]>()
+    {
+        {
+            put("Rafi", temp);
+        }
     };
 
     public static Map<String, String> combo = new HashMap<String, String>() {

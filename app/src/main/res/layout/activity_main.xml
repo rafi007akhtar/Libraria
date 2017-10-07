@@ -8,10 +8,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -31,21 +28,50 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="56dp"
-            android:background="@drawable/texture">
+            android:background="@drawable/texture"
+            >
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/welcome"
-                android:layout_marginLeft="15dp"
-                android:textSize="30sp"
+                android:textSize="18sp"
                 android:fontFamily="serif-light"
                 android:textColor="#fff"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="56dp"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test text"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                >
+
+                <QuickContactBadge
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:pointerIcon="@drawable/unissued_book"
+                    android:contentDescription="Unissued book"
+                    />
+
+            </ScrollView>
+
         </LinearLayout>
 
     </LinearLayout>
 
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </android.support.v4.widget.DrawerLayout>

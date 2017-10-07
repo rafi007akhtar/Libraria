@@ -14,7 +14,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#f4ae34"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="Bookshelf"
             app:titleTextColor="#fff"
