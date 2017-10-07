@@ -51,11 +51,8 @@ public class Profile extends AppCompatActivity
         String name = arrays.combo.get(identify[0]);
 
         int numberOfBooks = Integer.valueOf(arrays.users.get(name)[1]);
-        if (numberOfBooks == 0)
-        {
-            welcome = (TextView) findViewById(R.id.welcome);
-            welcome.setText("Hi, "+ name + ". Looks like your shelf is empty. You can search the catalog, or issue books");
-        }
+        welcome = (TextView) findViewById(R.id.welcome);
+        welcome.setText("Hi, "+ name + ". You can issue upto " + (9 - numberOfBooks) + " books right now.");
 
 
     }
