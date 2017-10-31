@@ -25,7 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Profile"
             android:label="@string/title_activity_main"
@@ -35,6 +34,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.farzanaakhtar.libraria.LoginActivity" />
         </activity>
+        <activity
+            android:name=".Catalog"
+            android:label="@string/title_activity_catalog"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Catalouge"
+            android:label="@string/title_activity_catalouge"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
