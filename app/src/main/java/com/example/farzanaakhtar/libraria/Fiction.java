@@ -2,6 +2,7 @@ package com.example.farzanaakhtar.libraria;
 
 import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -59,6 +60,8 @@ public class Fiction extends Fragment{
                             count--;
                         }
                     }
+                    else Snackbar.make(view, "You can't issue more than 9 books\n\n", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
             });
             body.addView(book);

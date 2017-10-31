@@ -30,8 +30,7 @@ public class Engineering extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.engineering, container, false);
         return rootView;
     }
@@ -46,14 +45,17 @@ public class Engineering extends Fragment {
             @Override
             public void onClick(View view)
             {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                for (TextView aBook: toBeIssued)
+                {
+                    arrays.push(aBook);
+                }
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show(); // update this
             }
         });
 
         body = view.findViewById(R.id.engg_books);
         body.removeAllViews();
-        
+
         for (String aBook: arrays.engg)
         {
             final TextView book = new TextView(getActivity());
@@ -82,6 +84,8 @@ public class Engineering extends Fragment {
                             toBeIssued.remove(book);
                         }
                     }
+                    else Snackbar.make(view, "You can't issue more than 9 books\n\n", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
             });
             body.addView(book);

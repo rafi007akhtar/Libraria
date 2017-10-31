@@ -3,6 +3,7 @@ package com.example.farzanaakhtar.libraria;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -23,7 +24,9 @@ public class Profile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView welcome;
+    public static TextView books[] = new TextView[9];
     NavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,15 @@ public class Profile extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        books[0] = (TextView) findViewById(R.id.book1);
+        books[1] = (TextView) findViewById(R.id.book2);
+        books[2] = (TextView) findViewById(R.id.book3);
+        books[3] = (TextView) findViewById(R.id.book4);
+        books[4] = (TextView) findViewById(R.id.book5);
+        books[5] = (TextView) findViewById(R.id.book6);
+        books[6] = (TextView) findViewById(R.id.book7);
+        books[7] = (TextView) findViewById(R.id.book8);
+        books[8] = (TextView) findViewById(R.id.book9);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +67,7 @@ public class Profile extends AppCompatActivity
         String identify[] = b.getStringArray("id");
         String name = arrays.combo.get(identify[0]);
 
-        int numberOfBooks = Integer.valueOf(arrays.users.get(name)[1]);
+        int numberOfBooks = arrays.top;
         welcome = (TextView) findViewById(R.id.welcome);
         welcome.setText("Hi, "+ name + ". You can issue upto " + (9 - numberOfBooks) + " books right now.");
 

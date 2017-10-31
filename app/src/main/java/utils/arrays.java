@@ -1,11 +1,13 @@
 package utils;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Map;
+import com.example.farzanaakhtar.libraria.Profile;
 
-public class arrays extends DialogFragment {
+public class arrays extends Profile {
     // Arrays related to books
     public static String engg[] = {
             "Introduction to Algorithms: CLRS",
@@ -57,7 +59,7 @@ public class arrays extends DialogFragment {
             "Bad Blood: Lorna Sage"
     };
 
-    public String books[][] = {engg, fiction};
+    public String books[][] = {engg, fiction, non_fiction};
 
     public static String temp[] = {"alimdrafi@gmail.com", "0", null};
 
@@ -77,12 +79,19 @@ public class arrays extends DialogFragment {
     static TextView issued[] = new TextView[9]; // stack of books issued
     public static int top = 0;
 
-    public void push(TextView book)
+    public static void push(TextView book)
     {
         if (top == 9)
         {
-            AlertDialog.Builder error = new AlertDialog.Builder(getActivity());
+            Snackbar.make(book, "Overflow\n\n", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            return;
         }
+
+        issued[top++] = book;
+        Profile.books[top].setVisibility(View.VISIBLE);
+        Profile.books[top].setText(book.getText());
+
     }
 
 }
