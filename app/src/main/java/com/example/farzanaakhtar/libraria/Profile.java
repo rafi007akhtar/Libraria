@@ -23,10 +23,10 @@ import utils.arrays;
 public class Profile extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView welcome;
+    public static TextView welcome;
     public static TextView books[] = new TextView[9];
     NavigationView navigationView;
-
+    public static String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class Profile extends AppCompatActivity
 
         Bundle b = getIntent().getExtras();
         String identify[] = b.getStringArray("id");
-        String name = arrays.combo.get(identify[0]);
+        name = arrays.combo.get(identify[0]);
 
         int numberOfBooks = arrays.top;
         welcome = (TextView) findViewById(R.id.welcome);

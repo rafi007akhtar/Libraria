@@ -2,6 +2,7 @@ package com.example.farzanaakhtar.libraria;
 
 import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -12,12 +13,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import utils.arrays;
 
 public class Fiction extends Fragment{
 
     LinearLayout body;
-    TextView Book[];
+    ArrayList<TextView> toBeIssued = new ArrayList<>();
+
     int count = arrays.top;
 
     @Override
@@ -31,9 +35,6 @@ public class Fiction extends Fragment{
         body = view.findViewById(R.id.fic);
         body.removeAllViews();
 
-        Book = new TextView[arrays.fiction.length];
-        int i = 0;
-
         for (String aBook: arrays.fiction)
         {
             final TextView book = new TextView(getActivity());
@@ -41,6 +42,21 @@ public class Fiction extends Fragment{
             book.setTextColor(Color.rgb(0,0,0));
             book.setPadding(10, 10, 10, 10);
             book.setText(aBook);
+
+            FloatingActionButton fab = view.findViewById(R.id.fic_issue);
+            fab.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    for (TextView aBook: toBeIssued)
+                    {
+                        body.removeView(aBook);
+                        arrays.push(aBook);
+                    }
+                    Snackbar.make(view, "Adding books ... \n\n\n", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                }
+            });
 
             book.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -51,12 +67,14 @@ public class Fiction extends Fragment{
                         {
                             book.setTextColor(Catalouge.defaultBackColor);
                             book.setBackgroundColor(Catalouge.selectColor);
+                            toBeIssued.add(book);
                             count++;
                         }
                         else
                         {
                             book.setTextColor(Catalouge.defaultTextColor);
                             book.setBackgroundColor(Catalouge.defaultBackColor);
+                            toBeIssued.remove(book);
                             count--;
                         }
                     }
@@ -65,8 +83,6 @@ public class Fiction extends Fragment{
                 }
             });
             body.addView(book);
-
-            Book[i++] = book;
         }
         TextView t = new TextView(getActivity());
         t.setText("\n\n\n");

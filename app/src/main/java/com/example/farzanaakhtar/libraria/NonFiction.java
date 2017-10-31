@@ -2,6 +2,7 @@ package com.example.farzanaakhtar.libraria;
 
 import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -12,12 +13,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import utils.arrays;
 
 public class NonFiction extends Fragment{
 
     LinearLayout body;
-    TextView Book[];
+    ArrayList<TextView> toBeIssued = new ArrayList<>();
+
     int count = arrays.top;
 
     @Override
@@ -32,8 +36,20 @@ public class NonFiction extends Fragment{
         body = view.findViewById(R.id.nonF);
         body.removeAllViews();
 
-        Book = new TextView[arrays.non_fiction.length];
-        int i = 0;
+        FloatingActionButton fab = view.findViewById(R.id.nonfic_issue);
+        fab.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                for (TextView aBook: toBeIssued)
+                {
+                    body.removeView(aBook);
+                    arrays.push(aBook);
+                }
+                Snackbar.make(view, "Adding books ... \n\n\n", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
 
         for (String aBook: arrays.non_fiction)
         {
@@ -52,12 +68,14 @@ public class NonFiction extends Fragment{
                         {
                             book.setTextColor(Catalouge.defaultBackColor);
                             book.setBackgroundColor(Catalouge.selectColor);
+                            toBeIssued.add(book);
                             count++;
                         }
                         else
                         {
                             book.setTextColor(Catalouge.defaultTextColor);
                             book.setBackgroundColor(Catalouge.defaultBackColor);
+                            toBeIssued.add(book);
                             count--;
                         }
                     }
@@ -66,8 +84,6 @@ public class NonFiction extends Fragment{
                 }
             });
             body.addView(book);
-
-            Book[i++] = book;
         }
         TextView t = new TextView(getActivity());
         t.setText("\n\n\n");

@@ -1,4 +1,5 @@
 package utils;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -88,10 +89,11 @@ public class arrays extends Profile {
             return;
         }
 
-        issued[top++] = book;
         Profile.books[top].setVisibility(View.VISIBLE);
         Profile.books[top].setText(book.getText());
-
+        Profile.books[top].setTextColor(Color.rgb(255, 255, 255));
+        issued[top++] = book;
+        welcome.setText("Hi, "+ name + ". You can issue upto " + (9 - top) + " books right now.");
     }
 
 }

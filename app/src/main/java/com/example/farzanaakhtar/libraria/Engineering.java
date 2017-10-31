@@ -47,9 +47,10 @@ public class Engineering extends Fragment {
             {
                 for (TextView aBook: toBeIssued)
                 {
+                    body.removeView(aBook);
                     arrays.push(aBook);
                 }
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show(); // update this
+                Snackbar.make(view, "Adding books ... \n\n\n", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         });
 
